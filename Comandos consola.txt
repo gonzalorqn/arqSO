@@ -1,0 +1,61 @@
+ls = list (ls -l)
+pwd = print working directory (pwd -l)
+cd = change directory (cd .. , cd /.../...)
+
+**CREAR DIRECTORIOS**
+mkdir
+	mkdir -p`a/{b,c}/x
+		a--b--x
+		  -c--x
+
+	mkdir -p uno/{dosbis,/dos/tres,dos/tresbis}
+		uno--dos--tres
+		    |    -tresbis
+		    -dosbis
+
+	mkdir -p datos/{personales/{seccion,sala/resumen},publicos/{imagenes,textos,facturas/{pagadas,no\npagadas}}}
+		datos--personales--seccion
+		      |		  -sala--resumen
+		      -publicos--imagenes
+				-textos
+				-facturas--pagadas
+					  -no pagadas
+
+
+rm = remove
+mv = move
+cp = copy
+mkfs = make file system
+
+**CREAR PARTICIONES DISCO**
+ls -l /dev/sd*
+sudo fdisk /dev/sdb
+n
+<enter> x3
++3G (particion de 3gb)
+w
+mkfs /dev/sdb1
+mkfs /dev/sdb2
+.
+.
+.
+
+
+ln saludar.txt otro.txt (inodo - enlace fisico)
+(otro.txt apunta a saludar.txt)
+rm saludar.txt
+
+ln -s otro.txt nuevo.txt (acceso directo)
+rm otro.txt (nuevo ahora no se puede acceder - enlace roto)
+
+echo "hola" >> archivo.txt
+echo "hola" >> foto.jpg
+tar -cf backup archivo.txt foto.jpg
+tar -tf backup
+
+sudo tar -cvf backup.tgz --totals alumno
+
+echo "echo "hola a todos"" >> ejecutor
+ls -l ejecutor
+chmod 764 ejecutor (cambiar permisos)
+./ejecutor
